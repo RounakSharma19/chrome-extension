@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome – Full Page Screenshot Exporter</title>
+  <link rel="icon" type="image/png" href="icons/icon32.png">
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 64px 24px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #475569;
+      max-width: 720px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 36px;
+      margin-bottom: 40px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .feature {
+      padding: 24px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #f8fafc, #eef2ff);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      gap: 14px;
+    }
+
+    .feature-icon {
+      font-size: 26px;
+    }
+
+    .feature-title {
+      font-weight: 700;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 0;
+      cursor: pointer;
+    }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-a {
+      max-height: 200px;
+      margin-top: 10px;
+    }
+
+    .feedback-box {
+      background: linear-gradient(180deg, #f8fafc, #eef2ff);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid #e2e8f0;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid #c7d2fe;
+      font-size: 15px;
+      margin-top: 12px;
+    }
+
+    button {
+      margin-top: 16px;
+      background: linear-gradient(135deg, #4f46e5, #2563eb);
+      color: #ffffff;
+      border: none;
+      padding: 16px 26px;
+      border-radius: 18px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="hero">
+      <h1>📸 Full Page Screenshot Exporter</h1>
+      <p>
+        Capture entire webpages exactly as they appear — export as
+        <strong>PDF, PNG, or JPEG</strong> with dark mode, selection,
+        and full-page scrolling.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>✨ Features</h2>
+      <div class="features">
+        <div class="feature"><div class="feature-icon">📄</div><div><div class="feature-title">Full Page Capture</div><div class="feature-desc">Automatic scrolling & stitching.</div></div></div>
+        <div class="feature"><div class="feature-icon">🖼️</div><div><div class="feature-title">PDF / PNG / JPEG</div><div class="feature-desc">High quality exports.</div></div></div>
+        <div class="feature"><div class="feature-icon">🌙</div><div><div class="feature-title">Dark Mode Export</div><div class="feature-desc">Applied only to output.</div></div></div>
+        <div class="feature"><div class="feature-icon">✂️</div><div><div class="feature-title">Selection Capture</div><div class="feature-desc">Capture specific areas.</div></div></div>
+        <div class="feature"><div class="feature-icon">👁️</div><div><div class="feature-title">Visible Area</div><div class="feature-desc">Only what you see.</div></div></div>
+        <div class="feature"><div class="feature-icon">⚡</div><div><div class="feature-title">Fast & Private</div><div class="feature-desc">No tracking.</div></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>❓ FAQ</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Does dark mode affect the website?</div>
+        <div class="faq-a">No. It only affects the exported file.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Does it work on long pages?</div>
+        <div class="faq-a">Yes. Automatic scrolling handles it.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is my data safe?</div>
+        <div class="faq-a">Yes. Everything runs locally.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💬 Send Feedback</h2>
+      <div class="feedback-box">
+        <textarea id="feedback" rows="4" placeholder="Write your feedback here..."></textarea>
+        <button id="sendFeedback">Send via Email</button>
+      </div>
+    </div>
+
+  <div class="footer">
+  <div style="margin-bottom: 6px;">
+    © 2026 Full Page Screenshot Exporter · Made with ❤️ by Rounak Sharma
+  </div>
+
+  <div style="display:flex; justify-content:center; gap:16px;">
+    <a
+      href="https://www.linkedin.com/in/rounak--sharma/"
+      target="_blank"
+      style="color:#2563eb; text-decoration:none; font-weight:600;"
+    >
+      🔗 LinkedIn
+    </a>
+
+    <a
+      href="https://github.com/RounakSharma19"
+      target="_blank"
+      style="color:#0f172a; text-decoration:none; font-weight:600;"
+    >
+      💻 GitHub
+    </a>
+  </div>
+</div>
+
+
+  </div>
+
+  <!-- ✅ External JS ONLY -->
+  <script src="welcome.js"></script>
+</body>
+</html>

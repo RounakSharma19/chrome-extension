@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Full Page Screenshot Exporter",
+  "version": "1.0.0",
+  "description": "Capture full page screenshots and export as PDF, PNG, or JPEG with optional dark mode",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "offscreen",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+  "16": "icons/icon16.png",
+  "32": "icons/icon32.png",
+  "48": "icons/icon48.png",
+  "128": "icons/icon128.png"
+}
+
+}
