@@ -1,0 +1,49 @@
+<div class="card">
+  <!-- Export format -->
+  <div class="label">Export format</div>
+  <div class="dropdown">
+    <button class="dropdown-btn" id="formatBtn">
+      <span id="formatLabel">PDF</span>
+      <span>▾</span>
+    </button>
+    <div class="dropdown-list" id="formatList">
+      <div class="dropdown-item active" data-value="pdf">PDF</div>
+      <div class="dropdown-item" data-value="png">PNG</div>
+      <div class="dropdown-item" data-value="jpeg">JPEG</div>
+    </div>
+  </div>
+  <input type="hidden" id="format" value="pdf" />
+
+  <!-- Capture mode -->
+  <div class="label" style="margin-top:16px">Capture mode</div>
+  <div class="dropdown">
+    <button class="dropdown-btn" id="modeBtn">
+      <span id="modeLabel">Full Page</span>
+      <span>▾</span>
+    </button>
+    <div class="dropdown-list" id="modeList">
+      <div class="dropdown-item active" data-value="full">Full Page</div>
+      <div class="dropdown-item" data-value="visible">Visible Area</div>
+      <div class="dropdown-item" data-value="selection">Selection Area</div>
+    </div>
+  </div>
+  <input type="hidden" id="mode" value="full" />
+
+  <!-- Dark mode -->
+  <div class="toggle">
+    <div>
+      <div class="toggle-title">Dark Mode</div>
+      <div class="toggle-sub">Applies only to exported file</div>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="darkMode" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <button id="start" class="btn">Start Capture</button>
+
+  <div class="progress">
+    <div class="bar" id="bar"></div>
+  </div>
+</div>

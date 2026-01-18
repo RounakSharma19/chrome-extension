@@ -222,17 +222,27 @@ function startSelection() {
   };
 
   overlay.onmouseup = e => {
-    overlay.remove();
 
-    chrome.runtime.sendMessage({
-      type: "SELECTION_DONE",
-      rect: {
-        x: Math.min(sx, e.clientX),
-        y: Math.min(sy, e.clientY),
-        width: Math.abs(e.clientX - sx),
-        height: Math.abs(e.clientY - sy),
-        dpr: window.devicePixelRatio
-      }
+    const rect = {
+      x: Math.min(sx, e.clientX),
+      y: Math.min(sy, e.clientY),
+      width: Math.abs(e.clientX - sx),
+      height: Math.abs(e.clientY - sy),
+      dpr: window.devicePixelRatio
+    };
+
+    overlay.style.display = "none";
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        overlay.remove();
+
+        chrome.runtime.sendMessage({
+          type: "SELECTION_DONE",
+          rect
+        });
+      });
     });
   };
 }
+

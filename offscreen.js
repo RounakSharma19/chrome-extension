@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener(async msg => {
     images = [c];
   }
 
-  /* ===== DECODE IMAGES (FAST PATH) ===== */
+  /* ===== DECODE IMAGES ===== */
   const canvases = await Promise.all(
     images.map(async src => {
       if (src instanceof OffscreenCanvas) return src;
@@ -50,28 +50,30 @@ chrome.runtime.onMessage.addListener(async msg => {
     })
   );
 
-  /* ===== PDF EXPORT (PARALLELIZED) ===== */
+  /* ===== PDF EXPORT ===== */
   if (msg.format === "pdf") {
     const pdf = new jsPDF({
-      orientation: canvases[0].width > canvases[0].height ? "landscape" : "portrait",
+      orientation:
+        canvases[0].width > canvases[0].height ? "landscape" : "portrait",
       unit: "px",
       format: [canvases[0].width, canvases[0].height]
     });
 
-    const base64Pages = await Promise.all(
-      canvases.map(c => canvasToBase64(c))
-    );
+    for (let i = 0; i < canvases.length; i++) {
+      if (i > 0) {
+        pdf.addPage([canvases[i].width, canvases[i].height]);
+      }
 
-    base64Pages.forEach((img, i) => {
-      if (i > 0) pdf.addPage([canvases[i].width, canvases[i].height]);
+      const img = await canvasToBase64(canvases[i]);
       pdf.addImage(img, "PNG", 0, 0, canvases[i].width, canvases[i].height);
-    });
+    }
 
     chrome.runtime.sendMessage({
       type: "DOWNLOAD",
       url: pdf.output("bloburl"),
       filename: sanitize(msg.title) + ".pdf"
     });
+
     return;
   }
 
